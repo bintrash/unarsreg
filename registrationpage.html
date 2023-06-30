@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration</title>
+<style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #1d1e22;
+      color: #ffffff;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+footer {
+      background-color: #1d1e22;
+      color: #ffffff;
+      padding: 40px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 290px; /* Adjust the width as needed */
+    }
+
+.footer-logo img {
+      width: 290px; /* Adjust the width as needed */
+      margin-right: 20px;
+    }
+
+    /* Registration page styles */
+    .container {
+      max-width: 400px;
+      margin: 10px auto;
+      padding: 40px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 24px;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    function register() {
+      var username = document.getElementById("reg-username").value;
+      var password = document.getElementById("reg-password").value;
+
+      // Create a user object with username and password properties
+      var user = {
+        username: username,
+        password: password
+      };
+
+      // Get existing users from local storage (if any)
+      var existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Add the new user to the existing users array
+      existingUsers.push(user);
+
+      // Save the updated users array to local storage
+      localStorage.setItem("users", JSON.stringify(existingUsers));
+
+      // Redirect to the sign-in page
+      window.location.href = "signin.html";
+    }
+  </script>
+</head>
+<body>
+<header>
+    <nav>
+      <div class="logo">
+        <img src="unarslog.png" alt="Your Logo">
+      </div>	
+    </nav>
+  </header>
+<div class="background-image"></div>
+
+  <div class="background-text">
+    <img src="cover.png">
+  </div>
+  <div class="container">
+    <h2>Register</h2>
+    <input type="text" id="reg-username" placeholder="Username">
+    <input type="password" id="reg-password" placeholder="Password">
+    <input type="submit" value="Register" onclick="register()">
+    <p class="message" id="reg-message"></p>
+  </div>
+<footer>
+    <nav>
+      <div class="footer-logo">
+        <img src="unarslog.png" alt="Your Logo">
+      </div>
+  </footer>
+</body>
+</html>

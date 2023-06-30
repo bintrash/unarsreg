@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+    <style>
+    /* Global styles */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header styles */
+    header {
+      background-color: #1d1e22;
+      color: #ffffff;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 290px; /* Adjust the width as needed */
+    }
+
+footer {
+      background-color: #1d1e22;
+      color: #ffffff;
+      padding: 40px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+.footer-logo img {
+      width: 290px; /* Adjust the width as needed */
+      margin-right: 20px;
+    }
+
+    /* Sign In page styles */
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 40px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 24px;
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function signIn() {
+      var username = document.getElementById("signin-username").value;
+      var password = document.getElementById("signin-password").value;
+
+      // Get registered users from local storage
+      var users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Check if the entered username and password match any registered user
+      var matchedUser = users.find(function(user) {
+        return user.username === username && user.password === password;
+      });
+
+      if (matchedUser) {
+        // Redirect to the desired URL after successful sign-in
+        window.location.href = "https://unars.durable.co/?pt=NjQ4YzE0MjE5M2Q0ZjNjMzA5NDJkMWMyOjE2ODgxMzMzOTUuMDE4OnByZXZpZXc=";
+      } else {
+        document.getElementById("signin-message").innerHTML = "Invalid username or password.";
+      }
+    }
+  </script>
+</head>
+<body>
+<header>
+    <nav>
+      <div class="logo">
+        <img src="unarslog.png" alt="Your Logo">
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+    <h2>Sign In</h2>
+    <input type="text" id="signin-username" placeholder="Username">
+    <input type="password" id="signin-password" placeholder="Password">
+    <input type="submit" value="Sign In" onclick="signIn()">
+    <p class="message" id="signin-message"></p>
+  </div>
+<footer>
+    <nav>
+      <div class="footer-logo">
+        <img src="unarslog.png" alt="Your Logo">
+      </div>
+  </footer>
+</body>
+</html>
